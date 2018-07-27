@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="title">
+            <h1>Monitoring</h1>
+            <span>{{ 'now'|date('m/d/Y H:i:s') }}</span>
+        </div>
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Titre</th>
+                <th>Message</th>
+            </tr>
+
+            {% for result in results %}
+                <tr>
+                    <td align="center">
+                        {% if result.status %}
+                            OK
+                        {% else %}
+                            KO
+                        {% endif %}
+                    </td>
+                    <td>{{ result.name }}</td>
+                    <td>{{ result.message }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+{% endblock %}
